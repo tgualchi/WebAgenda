@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Turno</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Ajusta la ruta según tu estructura de carpetas -->
+</head>
+<body>
+
+
+    <h1>Crear Usuario</h1>
+    <form action="/usuarios/crear" method="post" onsubmit="return validarFormulario()">
+        
+        <label for="usuario_id">Usuario:</label>
+        <input type="text" id="usuario_id" name="usuario_id" required>
+        <br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+        <label for="correoElectronico">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+        <br>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required>
+        <br>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
+        <br>
+        <button type="submit">Crear Usuario</button>
+    </form>
+
+    <h1>Reservar Turno</h1>
+<!-- Formulario para reservar turno -->
+<form action="/turnos/reservar" method="post" onsubmit="return validarFormularioReserva()">
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" required>
+    <br>
+    <label for="hora">Hora:</label>
+    <input type="time" id="hora" name="hora" required>
+    <br>
+    <label for="usuario_id">ID de Usuario:</label>
+    <input type="text" id="usuario_id" name="usuario_id" required>
+    <br>
+    <button type="submit">Reservar</button>
+</form>
+
+<!-- Script para validar el formulario de reservar turno -->
+<script>
+    function validarFormularioReserva() {
+        var usuario_id = document.getElementById('usuario_id').value;
+        // Agregar más validaciones si es necesario
+
+        if (!usuario_id) {
+            alert('El ID de Usuario es obligatorio para reservar turno');
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+
+    
+    
+
+    <!-- Script para validar el formulario -->
+    <script>
+        function validarFormulario() {
+            var usuario_id = document.getElementById('usuario_id').value;
+            var nombre = document.getElementById('nombre').value;
+            var correo = document.getElementById('correo').value;
+            var telefono = document.getElementById('telefono').value;
+            var contrasena = document.getElementById('contrasena').value;
+
+            console.log('Usuario_id:', usuario_id);
+            console.log('Nombre:', nombre);
+            console.log('Correo:', correo);
+            console.log('Teléfono:', telefono);
+            console.log('Contraseña:', contrasena);
+
+
+            if (!usuario_id || !nombre || !correo || !telefono || !contrasena) {
+                alert('Todos los campos son obligatorios');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
